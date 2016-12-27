@@ -1,0 +1,84 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{24A8497F-F25D-45BB-A33B-59699B5E9FA3}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeoLib.Contracts", "GeoLib.Contracts\GeoLib.Contracts.csproj", "{48D41BAA-8B12-4E50-A0F7-0386C175D722}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeoLib.Services", "GeoLib.Services\GeoLib.Services.csproj", "{C1EBBE5E-812E-4B4E-BD2A-66AE6AF914DA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeoLib.Core", "GeoLib.Core\GeoLib.Core.csproj", "{461922D9-747F-4BB0-AC2E-4737139EEDB6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeoLib.Data", "GeoLib.Data\GeoLib.Data.csproj", "{DB2CA02F-5D34-4734-8A44-634BFD381244}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Hosting", "Hosting", "{C245B175-EADB-4D7E-802C-74E274301EE5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeoLib.ConsoleHost", "GeoLib.ConsoleHost\GeoLib.ConsoleHost.csproj", "{AF233ED5-8D67-4788-9065-C21B993F6079}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeoLib.WebHost", "GeoLib.WebHost\GeoLib.WebHost.csproj", "{68A474B4-B167-4451-9912-E5485096888B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeoLib.WindowsHost", "GeoLib.WindowsHost\GeoLib.WindowsHost.csproj", "{F40306A8-0CB1-4A98-947D-34E3373DBCA5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeoLib.Proxies", "GeoLib.Proxies\GeoLib.Proxies.csproj", "{E249BB79-66B4-4535-8E58-939A231F8A0D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeoLib.Client", "GeoLib.Client\GeoLib.Client.csproj", "{D686A29F-4DEE-43E0-A440-D3CA3C072917}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{48D41BAA-8B12-4E50-A0F7-0386C175D722}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{48D41BAA-8B12-4E50-A0F7-0386C175D722}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{48D41BAA-8B12-4E50-A0F7-0386C175D722}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{48D41BAA-8B12-4E50-A0F7-0386C175D722}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C1EBBE5E-812E-4B4E-BD2A-66AE6AF914DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C1EBBE5E-812E-4B4E-BD2A-66AE6AF914DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C1EBBE5E-812E-4B4E-BD2A-66AE6AF914DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C1EBBE5E-812E-4B4E-BD2A-66AE6AF914DA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{461922D9-747F-4BB0-AC2E-4737139EEDB6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{461922D9-747F-4BB0-AC2E-4737139EEDB6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{461922D9-747F-4BB0-AC2E-4737139EEDB6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{461922D9-747F-4BB0-AC2E-4737139EEDB6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DB2CA02F-5D34-4734-8A44-634BFD381244}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DB2CA02F-5D34-4734-8A44-634BFD381244}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DB2CA02F-5D34-4734-8A44-634BFD381244}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DB2CA02F-5D34-4734-8A44-634BFD381244}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AF233ED5-8D67-4788-9065-C21B993F6079}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AF233ED5-8D67-4788-9065-C21B993F6079}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AF233ED5-8D67-4788-9065-C21B993F6079}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AF233ED5-8D67-4788-9065-C21B993F6079}.Release|Any CPU.Build.0 = Release|Any CPU
+		{68A474B4-B167-4451-9912-E5485096888B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{68A474B4-B167-4451-9912-E5485096888B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{68A474B4-B167-4451-9912-E5485096888B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{68A474B4-B167-4451-9912-E5485096888B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F40306A8-0CB1-4A98-947D-34E3373DBCA5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F40306A8-0CB1-4A98-947D-34E3373DBCA5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F40306A8-0CB1-4A98-947D-34E3373DBCA5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F40306A8-0CB1-4A98-947D-34E3373DBCA5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E249BB79-66B4-4535-8E58-939A231F8A0D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E249BB79-66B4-4535-8E58-939A231F8A0D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E249BB79-66B4-4535-8E58-939A231F8A0D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E249BB79-66B4-4535-8E58-939A231F8A0D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D686A29F-4DEE-43E0-A440-D3CA3C072917}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D686A29F-4DEE-43E0-A440-D3CA3C072917}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D686A29F-4DEE-43E0-A440-D3CA3C072917}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D686A29F-4DEE-43E0-A440-D3CA3C072917}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{AF233ED5-8D67-4788-9065-C21B993F6079} = {C245B175-EADB-4D7E-802C-74E274301EE5}
+		{68A474B4-B167-4451-9912-E5485096888B} = {C245B175-EADB-4D7E-802C-74E274301EE5}
+		{F40306A8-0CB1-4A98-947D-34E3373DBCA5} = {C245B175-EADB-4D7E-802C-74E274301EE5}
+	EndGlobalSection
+EndGlobal
