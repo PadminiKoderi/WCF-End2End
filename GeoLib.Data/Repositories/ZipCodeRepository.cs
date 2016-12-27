@@ -97,6 +97,7 @@ namespace GeoLib.Data
                     zipCodeList.Add(new ZipCode()
                     {
                         City = item["ZIPCITY"].ToString(),
+
                         Zip = item["ZIP"].ToString(),
                         State = new State()
                         {
