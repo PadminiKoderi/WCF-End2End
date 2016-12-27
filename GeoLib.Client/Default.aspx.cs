@@ -42,12 +42,12 @@ namespace GeoLib.Client
                 catch (FaultException<ApplicationException> fex)
                 {
                     txtCityInfo.Text = "type " + fex.GetType().Name + " message " + fex.Detail.Message + " state " + proxy.State.ToString();
-                    //exception will be type FaultException`1 message Error getting data. proxy state Faulted for unhandled exception meaning oly the includeexceptioninfaults is turned on state should be opened. but it is not working
+                    //exception will be type FaultException<applicationexception> message Error getting data. proxy state opened 
                 }
                 catch (FaultException fex)
                 {
                     txtCityInfo.Text = "type " + fex.GetType().Name + " message " + fex.Message + " state " + proxy.State.ToString();
-                    //exception will be type FaultException`1 message Error getting data. proxy state Faulted for unhandled exception meaning oly the includeexceptioninfaults is turned on state should be opened. but it is not working
+                    //exception will be type FaultException`1 message Error getting data. proxy state opened
                 }
                 catch (Exception ex)
                 {
@@ -96,6 +96,26 @@ namespace GeoLib.Client
              
             factory.Close();
 
+        }
+
+        protected void btnUpdateCityBatch_Click(object sender, EventArgs e)
+        {
+            List<ZipCityData> cityBatch = new List<ZipCityData>(){
+                new ZipCityData(){ZipCodeNew="00501",CityNew="Dallas"},
+                new ZipCityData(){ZipCodeNew="00602", CityNew="Irving"}
+            };
+            try
+            {
+                GeoClient proxy = new GeoClient("tcpEP");
+                proxy.UpdateZipCityBatch(cityBatch);
+                proxy.Close();
+
+            }
+            catch (Exception ex)
+            {
+                
+                throw;
+            }
         }
     }
 }

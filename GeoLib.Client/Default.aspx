@@ -34,6 +34,9 @@
         <div>
             <asp:TextBox ID="txtMessage" runat="server"></asp:TextBox>
         </div>
+        <div>
+            <asp:Button ID="btnUpdateCityBatch" runat="server" OnClick="btnUpdateCityBatch_Click" Text="Update City Batch" />
+        </div>
     </form>
 </body>
 </html>

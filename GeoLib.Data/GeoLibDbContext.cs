@@ -35,33 +35,26 @@ namespace GeoLib.Data
             DataTable dtData = new DataTable();
             OracleConnection cn = new OracleConnection();
             OracleDataAdapter OracleDataAdapter = default(OracleDataAdapter);            
-
-            try
-            {
-                cn.ConnectionString = ConfigurationManager.ConnectionStrings["OracleConn"].ConnectionString;
+             cn.ConnectionString = ConfigurationManager.ConnectionStrings["OracleConn"].ConnectionString;
                 cn.Open();
                 OracleDataAdapter = new OracleDataAdapter(Sql, cn);
                 OracleDataAdapter.Fill(dtData);
+                cn.Close();
                 return dtData;
 
-            }            
-            catch (Exception ex)
-            {
-
-                throw new ApplicationException("Error getting data.", ex);
-
-            }
-            finally
-            {
-                if ((cn != null))
-                {
-                    if (cn.State == ConnectionState.Open)
-                    {
-                        cn.Close();
-                    }
-                    cn = null;
-                }
-            }
+            
+        }
+        public static void UpdateOracleData(string sql)
+        {
+            
+            OracleConnection cn = new OracleConnection();
+            OracleCommand cm = new OracleCommand(sql, cn);
+            
+            cn.ConnectionString = ConfigurationManager.ConnectionStrings["OracleConn"].ConnectionString;
+            cn.Open();
+            cm.ExecuteNonQuery();   
+            cn.Close();
+            
         }
     }
 }

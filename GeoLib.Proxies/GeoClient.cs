@@ -41,5 +41,9 @@ namespace GeoLib.Proxies
         {
             return Channel.GetZips(zip, range);
         }
+        public void UpdateZipCityBatch(IEnumerable<ZipCityData> cityData)
+        {
+            Channel.UpdateZipCityBatch(cityData);
+        }
     }
 }

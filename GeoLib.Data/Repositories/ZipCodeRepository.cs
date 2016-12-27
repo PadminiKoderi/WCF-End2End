@@ -109,6 +109,10 @@ namespace GeoLib.Data
             }
             return zipCodeList;
         }
+        public void UpdateZipCity(string city, string zip)
+        {
+            GeoLibDbContext.UpdateOracleData("UPDATE ZIPCODE SET CITY='"+city+"' WHERE ZIP='"+zip+"'");
+        }
 
         
     }

@@ -14,6 +14,10 @@ namespace GeoLib.Services
     {
         public ZipCodeData GetZipInfo(string zip)
         {
+            //throw new ApplicationException("Zip code not found"); 
+            //throw new FaultException("Zip code not found");
+            //ApplicationException app = new ApplicationException("Zip not found");
+            //throw new FaultException<ApplicationException>(app, "just another message");
             ZipCodeData zipCodeData = null;
             IZipCodeRepository zipCodeRepository = new ZipCodeRepository();
             ZipCode zipCodeEntity = zipCodeRepository.GetByZip(zip);
@@ -46,12 +50,6 @@ namespace GeoLib.Services
 
         public IEnumerable<ZipCodeData> GetZips(string state)
         {
-            
-            //throw new ApplicationException("Zip code not found");
-            //throw new FaultException("Zip code not found");
-            ApplicationException app = new ApplicationException("Zip not found");
-            throw new FaultException<ApplicationException>(app, "just another message");
-           
             List<ZipCodeData> zipCodeData = new List<ZipCodeData>();
             IZipCodeRepository zipCodeRepository = new ZipCodeRepository();
             IEnumerable<ZipCode> zipCodeEntity = zipCodeRepository.GetByState(state);
@@ -80,5 +78,34 @@ namespace GeoLib.Services
             }
             return zipCodeData;
         }
+        public void UpdateZipCity(string zip, string city)
+        {
+            IZipCodeRepository zipCodeRepository = new ZipCodeRepository();
+            ZipCode entity = zipCodeRepository.GetByZip(zip);
+            if (entity != null)
+            {
+                entity.City = city;
+                zipCodeRepository.UpdateZipCity(city, zip);
+            }
+        }
+        //this method is for transaction
+        //if one fails, fail all
+        [OperationBehavior(TransactionScopeRequired=true)]//if there is an existing transaction, setting this true will join both the tran. if false, it will not join
+            //if operation succeeds, the operation will vote to commit , else rollback
+            //with this setting no tran needed at DB side
+        public void UpdateZipCityBatch(IEnumerable<ZipCityData> batchData)
+        {
+            IZipCodeRepository zipCodeRepository = new ZipCodeRepository();
+            int counter = 0;
+            foreach (ZipCityData  item in batchData)
+            {
+                counter++;
+                if (counter == 2)
+                    throw new FaultException("sec zip cannot be updated");
+                zipCodeRepository.UpdateZipCity(item.CityNew, item.ZipCodeNew);
+            }
+
+        }
+        
     }
 }

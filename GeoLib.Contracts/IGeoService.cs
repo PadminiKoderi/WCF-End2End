@@ -17,7 +17,11 @@ namespace GeoLib.Contracts
         IEnumerable<string> GetStates(bool primayOnly);
         [OperationContract(Name="GetZipsByState")] //this will help in resolving naming conflicts for lang that do not know method overloading
         IEnumerable<ZipCodeData> GetZips(string state);
-        [OperationContract(Name = "GetZipsForRange")]
+        [OperationContract(Name = "GetZipsForRange")]       
         IEnumerable<ZipCodeData> GetZips(string zip, int range);
+
+        [OperationContract]
+        [TransactionFlow(TransactionFlowOption.Allowed)] //this setting is needed, if the transaction is starting at client level. As a best practice, always set this
+        void UpdateZipCityBatch(IEnumerable<ZipCityData> cityData);
     }
 }
