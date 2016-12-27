@@ -11,7 +11,7 @@ namespace GeoLib.Contracts
     public interface IGeoService
     {
         [OperationContract]
-        [FaultContract(typeof(ApplicationException))]//this will make the client to anticiapte the exception type
+        [FaultContract(typeof(ApplicationException))]////this will make the client to anticiapte the exception type
         ZipCodeData GetZipInfo(string zip);
         [OperationContract]
         IEnumerable<string> GetStates(bool primayOnly);
