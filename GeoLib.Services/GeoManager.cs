@@ -68,7 +68,7 @@ namespace GeoLib.Services
             List<ZipCodeData> zipCodeData = new List<ZipCodeData>();
             IZipCodeRepository zipCodeRepository = new ZipCodeRepository();
             ZipCode zipCodeEntity = zipCodeRepository.GetByZip(zip);
-            IEnumerable<ZipCode> zips = zipCodeRepository.GetZipsForRange(zipCodeEntity, range);
+            IEnumerable<ZipCode> zips = null;// zipCodeRepository.GetZipsForRange(zipCodeEntity, range);
             if (zipCodeEntity != null)
             {
                 foreach (ZipCode item in zips)
