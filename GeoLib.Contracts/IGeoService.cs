@@ -23,5 +23,15 @@ namespace GeoLib.Contracts
         [OperationContract]
         [TransactionFlow(TransactionFlowOption.Allowed)] //this setting is needed, if the transaction is starting at client level. As a best practice, always set this
         void UpdateZipCityBatch(IEnumerable<ZipCityData> cityData);
+
+        
+        [OperationContract]
+        void RequestResponseCall();
+
+        [OperationContract(IsOneWay=true)] //oneway calls have to be of type void
+        void OneWayCall();
+        
+
+        
     }
 }

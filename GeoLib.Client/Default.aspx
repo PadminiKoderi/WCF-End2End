@@ -37,6 +37,9 @@
         <div>
             <asp:Button ID="btnUpdateCityBatch" runat="server" OnClick="btnUpdateCityBatch_Click" Text="Update City Batch" />
         </div>
+        <div>
+            <asp:Button ID="btnOneWayCall" runat="server" OnClick="btnOneWayCall_Click" Text="One Way Call" />
+        </div>
     </form>
 </body>
 </html>

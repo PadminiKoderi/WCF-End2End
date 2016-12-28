@@ -9,7 +9,8 @@ using System.ServiceModel.Channels;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-
+using System.Transactions;
+using System.Windows.Forms;
 namespace GeoLib.Client
 {
     public partial class Default : System.Web.UI.Page
@@ -60,7 +61,7 @@ namespace GeoLib.Client
 
         protected void btnGetState_Click(object sender, EventArgs e)
         {
-            Binding binding=new NetTcpBinding();
+            System.ServiceModel.Channels.Binding binding=new NetTcpBinding();
             EndpointAddress address=new EndpointAddress("net.tcp://localhost:8009/GeoService");//passing abc instead of using it from config
             
             if (!String.IsNullOrEmpty(txtState.Text))
@@ -104,11 +105,50 @@ namespace GeoLib.Client
                 new ZipCityData(){ZipCodeNew="00501",CityNew="Dallas"},
                 new ZipCityData(){ZipCodeNew="00602", CityNew="Irving"}
             };
+            #region percallclientmanualtransaction
+            //try
+            //{
+            //    GeoClient proxy = new GeoClient("tcpEP");
+            //    using (TransactionScope scope = new TransactionScope())
+            //    {
+                    
+            //        proxy.UpdateZipCityBatch(cityBatch);
+            //        scope.Complete();
+            //    }
+            //    proxy.Close();
+            //}
+            //catch (Exception ex)
+            //{
+
+            //    throw;
+            //}
+            #endregion
+            #region persessionclientmanualtransaction
+            //try
+            //{
+            //    GeoClient proxy = new GeoClient("tcpEP");
+            //    using (TransactionScope scope = new TransactionScope())
+            //    {
+
+            //        proxy.UpdateZipCityBatch(cityBatch);
+            //        proxy.Close();
+            //        scope.Complete();
+            //    }
+            //    
+            //}
+            //catch (Exception ex)
+            //{
+
+            //    throw;
+            //}
+            #endregion
             try
             {
-                GeoClient proxy = new GeoClient("tcpEP");
+                GeoAdminClient proxy = new GeoAdminClient("tcpEP");
                 proxy.UpdateZipCityBatch(cityBatch);
                 proxy.Close();
+                //if an error is thrown here, the update will still be rolled back because propagation of transaction is turned on the service -> TransactionFlowOption.Allowed
+                //if an error is thrown here ,the update will happen succesfully, if the transaction flow is disallowed on the service -> TransactionFlowOption.NotAllowed
 
             }
             catch (Exception ex)
@@ -116,6 +156,31 @@ namespace GeoLib.Client
                 
                 throw;
             }
+        }
+        #region OperationNotes
+        //Request - response call - call goes to the service, does the operation and comes back to the client. In the below eg. first service message will be printed then client message
+        //One way call - fire and forget - shul be of type void - isoneway=true in operationcontract - no soap response so no fault handling - when it is a transport session, proxy closes, client will be blocked untill call complete
+        //in the below eg, both the client first and the service message will happen simultaneously and then after the service is closed, client second message will come as transport session blocks the client
+        //Duplex call - service calls back the client - call back only with transport session(tcp,icp, wshttp with security n reliability on)
+        //no code for this . refer the site
+        #endregion
+        protected void btnOneWayCall_Click(object sender, EventArgs e)
+        {
+            #region requestresponsecall
+            GeoClient proxy = new GeoClient("tcpEP");
+            proxy.RequestResponseCall();
+            txtCityInfo.Text = "Request response call in the client";
+            proxy.Close();
+            #endregion
+
+            //#region onewaycall
+            //GeoClient proxy = new GeoClient("tcpEP");
+            //proxy.OneWayCall();
+            ////txtCityInfo.Text = "One way call in the client";
+            //MessageBox.Show("One way call in the client");
+            //proxy.Close();
+            //MessageBox.Show("Transport session blocked client");//this wil be displayed only after servce message is closed
+            //#endregion
         }
     }
 }
